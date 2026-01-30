@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ================================
+   Base Layer – Global Defaults
+================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-neutral-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    margin: 0;
+  }
+
+  /* Add cursor pointer to all interactive elements */
+  button, [role="button"], a, input, textarea, select {
+    @apply cursor-pointer;
+  }
+
+  /* Smooth scrolling for all browsers */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-white/50;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-neutral-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-500;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-neutral-200 text-neutral-900;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ================================
+   Animations
+================================ */
+@layer utilities {
+  .animate-slide-slow {
+    animation: slide-left 30s linear infinite;
+  }
+
+  .animate-slide-slow:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Smooth hover transitions */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Text selection styling */
+  ::selection {
+    @apply bg-neutral-200 text-neutral-900;
+  }
+
+  /* Focus visible improvements */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900;
+  }
+}
