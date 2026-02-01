@@ -27,13 +27,13 @@ export default function Hero() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve/v1769011670/Screenshot_2282_jtmjce.png')",
+          "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769971152/WAK06804.jpg_gwylyj.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/85 via-black/70 to-black/90" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/70 to-black/95" />
 
       {/* Content */}
       <div className="relative z-20 min-h-screen flex items-center">
@@ -51,10 +51,10 @@ export default function Hero() {
             {/* Headline */}
             <h1
               data-hero-animate
-              className="mt-4 text-white font-semibold tracking-tight leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700"
+              className="mt-4 text-white font-semibold tracking-tight leading-tight text-2xl sm:text-xl md:text-xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              Coherence is the real competitive advantage.
+              I help organizations align strategy, technology, and people - so transformation actually works.
             </h1>
 
             {/* Subcopy */}
@@ -62,9 +62,8 @@ export default function Hero() {
               data-hero-animate
               className="mt-6 text-slate-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 opacity-0 translate-y-2 transition-all duration-700"
             >
-              I partner with organisations and institutions to drive meaningful
-              digital and cultural transformation – by aligning technology,
-              storytelling, and talent pipelines into one coherent growth engine.
+              Most transformation fails because everything moves in isolation. <br />
+              <span className="text-white font-semibold tracking-wide uppercase">Coherence</span> is what turns effort into results.
             </p>
 
             {/* CTA GROUP */}
@@ -77,7 +76,7 @@ export default function Hero() {
                 href="#work"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium text-white bg-white/15 border border-white/25 backdrop-blur-md transition hover:bg-white/25 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-35px_rgba(255,255,255,0.35)] focus-ring hover-lift"
               >
-                Explore the work
+                See How I Work
               </a>
 
               {/* Secondary CTA – Desktop */}
@@ -109,7 +108,7 @@ export default function Hero() {
                   href="#thinking"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-white/80 border border-white/40 transition hover:text-white hover:border-white focus-ring hover-lift"
                 >
-                  Read Selected Work →
+                  See How I Work →
                 </a>
               </div>
             )}
