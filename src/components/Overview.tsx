@@ -37,7 +37,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-20 min-h-screen flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16">
           <div className="max-w-4xl text-center lg:text-left">
             {/* Eyebrow */}
             <p
@@ -52,7 +52,7 @@ export default function Hero() {
             {/* Headline */}
             <h1
               data-hero-animate
-              className="mt-4 text-white font-extrabold tracking-tight leading-tight text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700"
+              className="mt-4 text-white font-extrabold tracking-tight leading-tight text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700 break-words"
               style={{ fontFamily: "var(--fancy-heading)" }}
             >
               I help organizations align strategy, technology, and people - so transformation actually works.

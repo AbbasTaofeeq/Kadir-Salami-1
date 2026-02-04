@@ -1,11 +1,12 @@
 export default function LeadershipSection() {
   return (
-    <section id="about" className="w-full bg-neutral-50 text-neutral-900 py-16 sm:py-20 lg:py-24">
-      <div className="max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+    <section id="about" className="w-full bg-neutral-50 text-neutral-900 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-2 lg:items-center">
 
-          <div className="order-1 lg:order-2 relative">
-            <div className="aspect-[3/4] w-[400px] overflow-hidden rounded-xl bg-neutral-200 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.55)]">
+          {/* Image column - responsive width, no overlap on tablet */}
+          <div className="order-1 lg:order-2 relative min-w-0 max-w-full">
+            <div className="aspect-[3/4] w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[400px] mx-auto lg:mx-0 lg:ml-auto overflow-hidden rounded-xl bg-neutral-200 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.55)]">
               <div 
                 className="h-full w-full bg-center bg-cover relative"
                 style={{
@@ -14,7 +15,8 @@ export default function LeadershipSection() {
               />
             </div>
 
-            <div className="absolute -bottom-10 right-6 hidden sm:block">
+            {/* Quote - in-flow on mobile/tablet to avoid overlap; absolute only on desktop */}
+            <div className="mt-4 lg:mt-0 lg:absolute lg:-bottom-10 lg:right-6 hidden sm:block max-w-[min(320px,100%)]">
               <div className="bg-white/80 backdrop-blur-sm border border-neutral-200 shadow-sm px-4 py-3 rounded-lg transition-all duration-500 hover:shadow-md hover:scale-105 hover:bg-white/90">
                 <p 
                   className="text-sm text-neutral-700 italic transition-colors duration-300 hover:text-neutral-900"
@@ -26,7 +28,7 @@ export default function LeadershipSection() {
             </div>
           </div>
 
-          <div className="order-2 lg:order-1 space-y-5">
+          <div className="order-2 lg:order-1 space-y-5 min-w-0">
             <p className="text-sm font-medium text-amber-600 uppercase tracking-wide">My Perspective</p>
             {/* <p className="text-xs text-neutral-600 font-medium">Your Personal Credibility</p> */}
 

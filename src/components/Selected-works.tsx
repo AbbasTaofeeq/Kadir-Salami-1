@@ -13,12 +13,12 @@ export default function WorkSection() {
       ctaUrl: "https://techspecialistlimited.com/home",
     },
     {
-      title: "Mestich Media",
+      title: "Mswitch Media",
       description:
         "Used storytelling to make complex change clear, human, and actionable.",
       img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431484/Screenshot_2291_mdwm4d.png",
-      ctaText: "Explore Mestich Media",
-      ctaUrl: "https://mestichmedia.com/",
+      ctaText: "Explore Mswitch Media",
+      ctaUrl: "https://mswitchmedia.com/",
     },
 
     {
@@ -31,9 +31,9 @@ export default function WorkSection() {
     },
 
     {
-      title: "Istitutional Partnership",
+      title: "Institutional Partnership",
       description:
-        "Worked with institutions and hubs to digital tools, people, and purpose - ensuring initiatives translated into measurable, long-term impact.",
+        "Worked with institutions and hubs to align digital tools, people, and purpose - ensuring initiatives translated into measurable, long-term impact.",
       img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769432935/Screenshot_2285_ktq6gd.png",
       ctaText: "Discover More",
       ctaUrl: "#",
@@ -44,9 +44,9 @@ export default function WorkSection() {
   return (
     <section
       id="work"
-      className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-10 lg:py-12"
+      className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-12 sm:py-14 md:py-16 lg:py-20"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
         {/* Section Heading */}
         <div className="text-center mb-8">
           <h1

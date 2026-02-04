@@ -4,9 +4,9 @@ export default function SeeHowIWorkSection() {
   return (
     <section
       id="see-how-i-work"
-      className="w-full bg-gradient-to-b from-black via-neutral-950 to-neutral-900 text-white py-24"
+      className="w-full bg-gradient-to-b from-black via-neutral-950 to-neutral-900 text-white py-16 sm:py-20 md:py-24 lg:py-24"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Section heading */}
         <div className="text-center mb-16">
           <h1
@@ -18,10 +18,10 @@ export default function SeeHowIWorkSection() {
           <div className="mx-auto h-0.5 w-24 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400" />
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)] items-start">
+        <div className="grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)] items-start">
           {/* Pillars */}
           <div className="space-y-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 min-w-0">
               {/* Pillar 1 */}
               <div className="relative rounded-xl cursor-pointer bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 shadow-md hover:shadow-lg transition-shadow duration-200 border border-neutral-800/70 p-6 sm:p-7">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/60 to-transparent rounded-full" />
@@ -32,7 +32,7 @@ export default function SeeHowIWorkSection() {
                     </svg>
                   </span>
                   <h2
-                    className="text-xl font-bold text-amber-400"
+                    className="text-lg md:text-xl font-bold text-amber-400"
                     style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.01em' }}
                   >
                     Digital &amp; Organizational Transformation
@@ -58,7 +58,7 @@ export default function SeeHowIWorkSection() {
                     </svg>
                   </span>
                   <h2
-                    className="text-xl font-bold text-amber-400"
+                    className="text-lg md:text-xl font-bold text-amber-400"
                     style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.01em' }}
                   >
                     Storytelling &amp; Narrative Architecture
@@ -84,7 +84,7 @@ export default function SeeHowIWorkSection() {
                     </svg>
                   </span>
                   <h2
-                    className="text-xl font-bold text-amber-400"
+                    className="text-lg md:text-xl font-bold text-amber-400"
                     style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.01em' }}
                   >
                     Strategy &amp; System Design
@@ -112,7 +112,7 @@ export default function SeeHowIWorkSection() {
                     </svg>
                   </span>
                   <h2
-                    className="text-xl font-bold text-amber-400"
+                    className="text-lg md:text-xl font-bold text-amber-400"
                     style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.01em' }}
                   >
                     Talent &amp; Leadership Systems
@@ -168,7 +168,7 @@ export default function SeeHowIWorkSection() {
             <div>
               <a
                 href="/selected-work"
-                className="inline-flex items-center justify-center rounded-md bg-amber-600 hover:bg-amber-700 transition focus-ring px-4 py-2 text-[10px] sm:text-[12px] font-medium text-white shadow-md hover:bg-[#135fcc] hover:shadow-lg transition-colors transition-shadow duration-150 focus-ring"
+                className="inline-flex items-center justify-center rounded-md bg-amber-600 hover:bg-amber-700 transition focus-ring px-4 py-2.5 text-xs sm:text-sm font-medium text-white shadow-md hover:shadow-lg transition-colors transition-shadow duration-150"
                 style={{
                   fontFamily:
                     'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',

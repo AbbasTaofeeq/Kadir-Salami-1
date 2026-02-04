@@ -66,9 +66,9 @@ export default function InsightsSection() {
     <section id="thinking">
       <section
         id="thinking-modal"
-        className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-16 sm:py-20 lg:py-24"
+        className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-14 sm:py-20 md:py-20 lg:py-24"
       >
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-3xl">
             <p className="text-xs tracking-[0.22em] uppercase text-neutral-400">
               Insights

@@ -31,9 +31,9 @@ export default function WhoIWorkWithSection() {
 	return (
 		<section
 			id="who-i-work-with"
-			className="w-full bg-gradient-to-b from-white via-amber-50 to-white text-slate-900 py-20"
+			className="w-full bg-gradient-to-b from-white via-amber-50 to-white text-slate-900 py-16 sm:py-20 md:py-20 lg:py-24"
 		>
-			<div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
 				{/* Section heading */}
 				<div className="text-center mb-10">
 					<h1

@@ -4,9 +4,9 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className="w-full bg-neutral-50 text-neutral-900 py-20 sm:py-16 lg:py-18"
+      className="w-full bg-neutral-50 text-neutral-900 py-16 sm:py-20 lg:py-24"
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <p className="text-xs tracking-[0.22em] uppercase text-neutral-500 mb-4">

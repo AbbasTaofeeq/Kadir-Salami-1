@@ -89,13 +89,13 @@ export default function Navbar() {
         scrolled ? "bg-white text-black shadow-sm" : "bg-transparent text-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-3 md:py-4">
+        <div className="flex items-center justify-between gap-2">
+          {/* Logo - smaller on tablet so nav fits */}
           <button
             onClick={() => scrollToId("home")}
             aria-label="Kadir Salami"
-            className="text-2xl md:text-3xl font-semibold tracking-tight hover:opacity-95 focus-ring hover-lift"
+            className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold tracking-tight hover:opacity-95 focus-ring hover-lift shrink-0"
             style={{
               fontFamily:
                 "Inter, Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif",
@@ -105,26 +105,26 @@ export default function Navbar() {
             Kadir Salami
           </button>
 
-          {/* Desktop / Tablet Navigation */}
+          {/* Desktop / Tablet Navigation - tighter on tablet (768–1024) */}
           <ul
-            className="hidden md:flex items-center gap-6 lg:gap-10 text-sm"
+            className="hidden md:flex items-center gap-1 md:gap-2 lg:gap-6 xl:gap-8 text-xs md:text-xs lg:text-sm py-1"
             style={{ fontFamily: "Inter, Roboto, sans-serif" }}
           >
               {[
                 ["home", "Overview"],
                 ["problem", "The Problem"],
-                ["about", "Leadership"],
-                ["work", "Selected work"],
+                ["about", "My Perspective"],
+                ["work", "Selected Work"],
                 ["thinking", "Insights"],
                 ["contact", "Connect"],
               ].map(([id, label]) => {
                 const isActive = activeId === id;
                 return (
-                  <li key={id}>
+                  <li key={id} className="shrink-0">
                     <button
                       onClick={() => scrollToId(id)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative py-2 px-4 rounded-md transition-colors duration-300 focus-ring hover-lift ${
+                      className={`relative py-2 px-2 md:px-2.5 lg:px-4 rounded-md transition-colors duration-300 focus-ring hover-lift whitespace-nowrap ${
                         scrolled
                           ? "text-black hover:bg-amber-50 hover:text-black"
                           : "text-white hover:text-white"
@@ -142,8 +142,8 @@ export default function Navbar() {
               })}
           </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          {/* Desktop CTA - hidden on tablet to save space, show from lg */}
+          <div className="hidden lg:block shrink-0">
             <button
               onClick={() => scrollToId("contact")}
               className="inline-flex items-center px-4 py-2 text-sm rounded-md bg-amber-600 text-white hover:bg-amber-700 transition focus-ring"
@@ -181,8 +181,8 @@ export default function Navbar() {
           {[
             ["home", "Overview"],
             ["problem", "The Problem"],
-            ["about", "Leadership"],
-            ["work", "Selected work"],
+            ["about", "My Perspective"],
+            ["work", "Selected Work"],
             ["thinking", "Insights"],
             ["contact", "Connect"],
           ].map(([id, label]) => (
