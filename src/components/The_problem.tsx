@@ -45,7 +45,7 @@ export default function ProblemSection() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-600" />
-                  <span className="leading-relaxed text-sm" style={{ fontFamily: 'var(--bold-paragraph)' }}>Everything improves — but nothing connects.</span>
+                  <span className="leading-relaxed text-sm" style={{ fontFamily: 'var(--bold-paragraph)' }}>Everything improves - but nothing connects.</span>
                 </li>
               </ul>
               <p className="mt-3 text-sm font-semibold text-black" style={{ fontFamily: 'var(--bold-paragraph)' }}>Progress without coherence creates motion, not momentum.</p>
@@ -67,7 +67,7 @@ export default function ProblemSection() {
             </h2>
             <div className="space-y-3 text-sm text-slate-900" style={{ fontFamily: 'var(--bold-paragraph)' }}>
               <p className="font-medium">Coherence is not alignment workshops. It’s architecture.</p>
-              <p className="leading-relaxed text-sm" style={{ fontFamily: 'var(--bold-paragraph)' }}>I work with leaders and institutions to design coherent systems — where strategy, storytelling, technology, and talent reinforce each other.</p>
+              <p className="leading-relaxed text-sm" style={{ fontFamily: 'var(--bold-paragraph)' }}>I work with leaders and institutions to design coherent systems - where strategy, storytelling, technology, and talent reinforce each other.</p>
               <ul className="list-none pl-0 space-y-2">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-600" />

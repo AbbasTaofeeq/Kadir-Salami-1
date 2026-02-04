@@ -44,7 +44,7 @@ export default function SeeHowIWorkSection() {
                     fontFamily: 'var(--bold-paragraph)',
                   }}
                 >
-                  Design transformation that accounts for people, incentives, and reality — not just tools.
+                  Design transformation that accounts for people, incentives, and reality - not just tools.
                 </p>
               </div>
 
