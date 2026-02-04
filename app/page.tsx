@@ -6,6 +6,8 @@ import Selected_works from "@/src/components/Selected-works";
 import Insights from "@/src/components/Insights";
 import Partners from "@/src/components/partners";
 import Connect from "@/src/components/Connect";
+import SeeHowIWorkSection from "@/src/components/SeeHowIwork";
+import WhoIWorkWithSection from "@/src/components/Who-I-Work-With";
 
 export default function Page() {
   return (
@@ -13,8 +15,10 @@ export default function Page() {
       <Nav_bar />
       <Overview />
       <The_problem />
-      <Leadership />
+      <SeeHowIWorkSection />
+      <WhoIWorkWithSection />
       <Selected_works />
+      <Leadership />
       <Insights />
       <Partners />
       <Connect />

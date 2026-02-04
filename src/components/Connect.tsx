@@ -1,120 +1,156 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Contact() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [formMessage, setFormMessage] = useState<{ text: string; isSuccess: boolean } | null>(null);
-  const [formData, setFormData] = useState({
-    from_name: "",
-    from_email: "",
-    subject: "",
-    message: ""
-  });
-  const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
-
   const formRef = useRef<HTMLFormElement>(null);
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
+  const btnTextRef = useRef<HTMLSpanElement>(null);
+  const btnLoadingRef = useRef<HTMLSpanElement>(null);
+  const formMessageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Initialize EmailJS
-    if (typeof window !== "undefined") {
-      (function() {
-        const emailjs = (window as any).emailjs;
-        if (emailjs) {
-          emailjs.init("6rRXLq1IpQrsJRJdk");
+    // Initialize EmailJS and form functionality exactly like original
+    const initializeForm = () => {
+      if (!formRef.current) return;
+      
+      const contactForm = formRef.current;
+      const submitBtn = submitBtnRef.current;
+      const btnText = btnTextRef.current;
+      const btnLoading = btnLoadingRef.current;
+      const formMessage = formMessageRef.current;
+      
+      // Initialize EmailJS immediately - exactly like original
+      if (typeof window !== "undefined" && (window as any).emailjs) {
+        (window as any).emailjs.init("6rRXLq1IpQrsJRJdk");
+      }
+      
+      // Show message function - exactly like original
+      function showMessage(message: string, isSuccess = true) {
+        if (!formMessage) return;
+        
+        formMessage.textContent = message;
+        formMessage.classList.remove("hidden", "bg-green-500/20", "text-green-300", "border-green-500/30", "bg-red-500/20", "text-red-300", "border-red-500/30");
+        
+        if (isSuccess) {
+          formMessage.classList.add("bg-green-500/20", "text-green-300", "border", "border-green-500/30");
+        } else {
+          formMessage.classList.add("bg-red-500/20", "text-red-300", "border", "border-red-500/30");
         }
-      })();
-    }
+        
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+          formMessage.classList.add("hidden");
+        }, 5000);
+      }
+      
+      // Set loading state - exactly like original
+      function setLoading(isLoading: boolean) {
+        if (isLoading) {
+          if (submitBtn) submitBtn.disabled = true;
+          if (btnText) btnText.classList.add("hidden");
+          if (btnLoading) btnLoading.classList.remove("hidden");
+        } else {
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnText) btnText.classList.remove("hidden");
+          if (btnLoading) btnLoading.classList.add("hidden");
+        }
+      }
+      
+      // Handle form submission - exactly like original
+      const handleSubmit = async (e: Event) => {
+        e.preventDefault();
+        
+        // Get form data - exactly like original
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Validate required fields - exactly like original
+        if (!data.from_name || !data.from_email || !data.subject || !data.message) {
+          showMessage("Please fill in all required fields.", false);
+          return;
+        }
+        
+        // Validate email - exactly like original
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.from_email as string)) {
+          showMessage("Please enter a valid email address.", false);
+          return;
+        }
+        
+        setLoading(true);
+        
+        try {
+          // Send email using EmailJS - exactly like original
+          const emailjs = (window as any).emailjs;
+          const response = await emailjs.send(
+            "service_7kkw8ch",
+            "template_cd0j0k6",
+            {
+              from_name: data.from_name,
+              from_email: data.from_email,
+              subject: data.subject,
+              message: data.message,
+              to_email: "abbastaofeeq.001@gmail.com",
+            }
+          );
+          
+          if (response.status === 200) {
+            showMessage("Thank you! Your message has been sent successfully. Kadir will get back to you soon.", true);
+            contactForm.reset();
+          } else {
+            throw new Error("Failed to send message");
+          }
+        } catch (error) {
+          console.error("EmailJS Error:", error);
+          showMessage("Sorry, there was an error sending your message. Please try again later or email directly at abbastaofeeq.001@gmail.com", false);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      contactForm.addEventListener("submit", handleSubmit);
+      
+      // Add input validation feedback - exactly like original
+      const requiredFields = contactForm.querySelectorAll("[required]");
+      requiredFields.forEach((field: Element) => {
+        const inputField = field as HTMLInputElement | HTMLTextAreaElement;
+        
+        inputField.addEventListener("blur", () => {
+          if (inputField.value.trim() === "") {
+            inputField.classList.add("border-red-500/50");
+            inputField.classList.remove("border-white/20");
+          } else {
+            inputField.classList.remove("border-red-500/50");
+            inputField.classList.add("border-white/20");
+          }
+        });
+        
+        inputField.addEventListener("focus", () => {
+          inputField.classList.remove("border-red-500/50");
+          inputField.classList.add("border-white/40");
+        });
+      });
+      
+      // Email field validation - exactly like original
+      const emailField = document.getElementById("from_email") as HTMLInputElement;
+      if (emailField) {
+        emailField.addEventListener("blur", () => {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (emailField.value && !emailRegex.test(emailField.value)) {
+            emailField.classList.add("border-red-500/50");
+            emailField.classList.remove("border-white/20");
+          } else if (emailField.value) {
+            emailField.classList.remove("border-red-500/50");
+            emailField.classList.add("border-white/20");
+          }
+        });
+      }
+    };
+    
+    // Initialize immediately - no delay
+    initializeForm();
   }, []);
-
-  const showMessage = (message: string, isSuccess: boolean) => {
-    setFormMessage({ text: message, isSuccess });
-    setTimeout(() => {
-      setFormMessage(null);
-    }, 5000);
-  };
-
-  const validateField = (name: string, value: string) => {
-    if (value.trim() === "") {
-      setFieldErrors(prev => ({ ...prev, [name]: true }));
-      return false;
-    }
-    
-    if (name === "from_email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        setFieldErrors(prev => ({ ...prev, [name]: true }));
-        return false;
-      }
-    }
-    
-    setFieldErrors(prev => ({ ...prev, [name]: false }));
-    return true;
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error on focus
-    if (fieldErrors[name]) {
-      setFieldErrors(prev => ({ ...prev, [name]: false }));
-    }
-  };
-
-  const handleInputBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    validateField(name, value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate all fields
-    const isNameValid = validateField("from_name", formData.from_name);
-    const isEmailValid = validateField("from_email", formData.from_email);
-    const isSubjectValid = validateField("subject", formData.subject);
-    const isMessageValid = validateField("message", formData.message);
-    
-    if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid) {
-      showMessage("Please fill in all required fields correctly.", false);
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    try {
-      const emailjs = (window as any).emailjs;
-      if (!emailjs) {
-        throw new Error("EmailJS not loaded");
-      }
-      
-      const response = await emailjs.send(
-        "service_aefr07m",
-        "template_cd0j0k6",
-        {
-          from_name: formData.from_name,
-          from_email: formData.from_email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: "abbastaofeeq.001@gmail.com",
-        }
-      );
-      
-      if (response.status === 200) {
-        showMessage("Thank you! Your message has been sent successfully. Kadir will get back to you soon.", true);
-        setFormData({ from_name: "", from_email: "", subject: "", message: "" });
-        setFieldErrors({});
-      } else {
-        throw new Error("Failed to send message");
-      }
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      showMessage("Sorry, there was an error sending your message. Please try again later or email directly at abbas@gmail.com", false);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -129,9 +165,9 @@ export default function Contact() {
               <p className="text-xs tracking-[0.22em] uppercase text-white/60">Connect</p>
               <h2 
                 className="text-3xl sm:text-4xl lg:text-5xl text-white font-semibold leading-tight"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--fancy-heading)" }}
               >
-                Let's build something coherent
+                Let&apos;s build something coherent
               </h2>
               <p className="text-base sm:text-lg text-white/75 mb-8">
                 Interested in long-term work where clarity, discipline, and meaningful outcomes matter.
@@ -182,12 +218,12 @@ export default function Contact() {
               {/* Compact Contact Form */}
               <div className="max-w-2xl mx-auto">
                 <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_18px_50px_-40px_rgba(255,255,255,0.3)]">
-                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                  <form ref={formRef} className="space-y-4">
                     {/* Form Header */}
                     <div className="text-center mb-6">
                       <h3 
                         className="text-lg font-semibold text-white mb-2" 
-                        style={{ fontFamily: "'Playfair Display', serif" }}
+                        style={{ fontFamily: "var(--fancy-heading)" }}
                       >
                         Send a message
                       </h3>
@@ -205,14 +241,7 @@ export default function Contact() {
                           name="from_name" 
                           required 
                           placeholder="Your Name"
-                          value={formData.from_name}
-                          onChange={handleInputChange}
-                          onBlur={handleInputBlur}
-                          className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all duration-300 text-sm ${
-                            fieldErrors.from_name 
-                              ? "border-red-500/50" 
-                              : "border-white/20 focus:border-white/40"
-                          }`}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300 text-sm"
                         />
                       </div>
                       <div>
@@ -222,14 +251,7 @@ export default function Contact() {
                           name="from_email" 
                           required 
                           placeholder="Your Email"
-                          value={formData.from_email}
-                          onChange={handleInputChange}
-                          onBlur={handleInputBlur}
-                          className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all duration-300 text-sm ${
-                            fieldErrors.from_email 
-                              ? "border-red-500/50" 
-                              : "border-white/20 focus:border-white/40"
-                          }`}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300 text-sm"
                         />
                       </div>
                     </div>
@@ -242,14 +264,7 @@ export default function Contact() {
                         name="subject" 
                         required 
                         placeholder="Subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        onBlur={handleInputBlur}
-                        className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all duration-300 text-sm ${
-                          fieldErrors.subject 
-                            ? "border-red-500/50" 
-                            : "border-white/20 focus:border-white/40"
-                        }`}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300 text-sm"
                       />
                     </div>
 
@@ -261,48 +276,35 @@ export default function Contact() {
                         required 
                         rows={4} 
                         placeholder="Your message..."
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        onBlur={handleInputBlur}
-                        className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-white placeholder-white/40 focus:outline-none focus:bg-white/10 transition-all duration-300 resize-none text-sm ${
-                          fieldErrors.message 
-                            ? "border-red-500/50" 
-                            : "border-white/20 focus:border-white/40"
-                        }`}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-300 resize-none text-sm"
                       />
                     </div>
 
                     {/* Submit Button */}
                     <div className="pt-2">
                       <button 
+                        ref={submitBtnRef}
                         type="submit" 
-                        disabled={isLoading}
-                        className="w-full px-6 py-3 cursor-pointer bg-white text-neutral-900 font-medium rounded-xl hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-15px_rgba(255,255,255,0.3)] focus-ring hover-lift text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full px-6 py-3 cursor-pointer bg-white text-neutral-900 font-medium rounded-xl hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-15px_rgba(255,255,255,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-sm"
                       >
-                        {isLoading ? (
-                          <>
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-neutral-900 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Sending...
-                          </>
-                        ) : (
-                          "Send Message"
-                        )}
+                        <span ref={btnTextRef}>Send Message</span>
+                        <span ref={btnLoadingRef} className="hidden">
+                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-neutral-900 inline"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4">
+                            </circle>
+                            <path className="opacity-75" fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                          </svg>
+                          Sending...
+                        </span>
                       </button>
                     </div>
 
                     {/* Success/Error Messages */}
-                    {formMessage && (
-                      <div className={`rounded-lg p-4 text-sm font-medium transition-all duration-300 ${
-                        formMessage.isSuccess 
-                          ? "bg-green-500/20 text-green-300 border border-green-500/30" 
-                          : "bg-red-500/20 text-red-300 border border-red-500/30"
-                      }`}>
-                        {formMessage.text}
-                      </div>
-                    )}
+                    <div ref={formMessageRef} className="hidden rounded-lg p-4 text-sm font-medium transition-all duration-300">
+                    </div>
                   </form>
                 </div>
               </div>
@@ -327,10 +329,11 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* EmailJS Script */}
+      {/* EmailJS Script - Using original approach */}
       <script 
         type="text/javascript" 
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+        async
       />
     </>
   );

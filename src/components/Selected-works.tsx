@@ -1,121 +1,87 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export default function WorkSection() {
-  const moreWorkRef = useRef<HTMLDivElement | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const workItems = [
+    {
+      title: "TechSpecialist Consulting",
+      description:
+        "Designed transformation systems that connect technology to organizational reality.",
+      img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431483/Screenshot_2287_fkdmix.png",
+      ctaText: "Visit TechSpecialist Consulting",
+      ctaUrl: "https://techspecialistlimited.com/home",
+    },
+    {
+      title: "Mestich Media",
+      description:
+        "Used storytelling to make complex change clear, human, and actionable.",
+      img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431484/Screenshot_2291_mdwm4d.png",
+      ctaText: "Explore Mestich Media",
+      ctaUrl: "https://mestichmedia.com/",
+    },
 
-  useEffect(() => {
-    const el = moreWorkRef.current;
-    if (!el) return;
+    {
+      title: "Mswicth Creative Hub",
+      description:
+        "Empowered creative industries by building digital infrastructure and narrative systems that scale.",
+      img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769432674/Screenshot_2290_fbhhcm.png",
+      ctaText: "Explore Mswicth Creative Hub",
+      ctaUrl: "https://mswitch-hub.africa/",
+    },
 
-    if (expanded) {
-      el.setAttribute("aria-hidden", "false");
-      el.style.maxHeight = el.scrollHeight + "px";
-      el.classList.remove("opacity-0", "translate-y-2");
-      el.classList.add("opacity-100", "translate-y-0");
-    } else {
-      el.setAttribute("aria-hidden", "true");
-      el.style.maxHeight = "0px";
-      el.classList.remove("opacity-100", "translate-y-0");
-      el.classList.add("opacity-0", "translate-y-2");
-    }
-  }, [expanded]);
+    {
+      title: "Istitutional Partnership",
+      description:
+        "Worked with institutions and hubs to digital tools, people, and purpose - ensuring initiatives translated into measurable, long-term impact.",
+      img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769432935/Screenshot_2285_ktq6gd.png",
+      ctaText: "Discover More",
+      ctaUrl: "#",
+    },
+    
+  ];
 
   return (
-    <section id="work" className="w-full bg-neutral-950 text-white py-20 sm:py-24 lg:py-28">
-      <div className="max-w-6xl mx-auto px-6 lg:px-12">
-
-        <div className="max-w-3xl">
-          <p className="text-xs tracking-[0.22em] uppercase text-white/60">
-            Selected Work
-          </p>
-          <h2
-            className="mt-4 text-3xl text-white sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight"
-            style={{ fontFamily: "Playfair Display, serif" }}
+    <section
+      id="work"
+      className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-10 lg:py-12"
+    >
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="text-center mb-8">
+          <h1
+            className="text-2xl sm:text-2xl md:text-3xl font-extrabold tracking-tight mb-2 text-white"
+            style={{
+              fontFamily: "Playfair Display, serif",
+              letterSpacing: "-0.02em",
+            }}
           >
             Building systems, not just products
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-white/70">
+          </h1>
+          <div className="mx-auto h-0.5 w-16 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 mb-3" />
+          <p
+            className="text-sm text-white/70 max-w-2xl mx-auto leading-relaxed"
+            style={{
+              fontFamily:
+                'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
+            }}
+          >
             Focused on leadership, ecosystems, and long-term value.
           </p>
         </div>
 
-        {/* GRID */}
-        <div className="mt-12 grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-3">
-
-          {/* CARD 1 */}
-          <WorkCard
-            title="Mswitch Group"
-            role="Founder & Group Lead"
-            tag="Group Strategy & Execution"
-            image="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431482/Screenshot_2286_ivnuzz.png"
-            description="Built and scaled a multi-vertical group across digital transformation, media, and talent development - aligning technology, storytelling, and capability into one growth system."
-          />
-
-          {/* CARD 2 */}
-          <WorkCard
-            title="TechSpecialist Consulting"
-            role="Strategic & Technical Lead"
-            tag="Digital Transformation"
-            image="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431483/Screenshot_2287_fkdmix.png"
-            description="Led the design of digital systems and advisory frameworks that move organisations from fragmented execution to coherent, scalable operations."
-          />
-
-          {/* CARD 3 */}
-          <WorkCard
-            title="Mswitch Media"
-            role="Narrative & Media Strategy"
-            tag="Storytelling & Trust"
-            image="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431484/Screenshot_2291_mdwm4d.png"
-            description="Developed communication systems that translate complex ideas into clear, trusted narratives for institutions, founders, and ecosystems."
-          />
-        </div>
-
-        {/* HIDDEN / REVEAL */}
-        <div className="mt-8">
-          <div
-            ref={moreWorkRef}
-            id="moreWork"
-            className="overflow-hidden opacity-0 translate-y-2 transition-[max-height,opacity,transform] duration-1000 ease-out"
-            style={{ maxHeight: "0px" }}
-            aria-hidden="true"
-          >
-            <div className="pt-6 grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-3">
-
-              <WorkCard
-                title="Mswitch Creative-hub"
-                role="Program & Capability Lead"
-                tag="Talent & Capability Building"
-                image="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769432674/Screenshot_2290_fbhhcm.png"
-                description="Designed talent pipelines that connect skills development with real economic participation - bridging learning and opportunity with consistent delivery."
-              />
-
-              <WorkCard
-                title="Institutional Partnerships"
-                role="Ecosystem Partner"
-                tag="Institutional Systems"
-                image="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769432935/Screenshot_2285_ktq6gd.png"
-                description="Worked with institutions and hubs to align digital tools, people, and purpose - ensuring initiatives translate into measurable, long-term impact."
-              />
-
-              <div className="hidden lg:block rounded-xl border border-white/10 bg-white/[0.02]" />
-            </div>
-          </div>
-
-          <div className="mt-10 flex justify-center lg:justify-start">
-            <button
-              id="toggleMoreWork"
-              type="button"
-              aria-expanded={expanded}
-              aria-controls="moreWork"
-              onClick={() => setExpanded(!expanded)}
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-medium text-white border border-white/20 bg-white/[0.04] hover:bg-white/[0.08] transition focus-ring hover-lift"
-            >
-              {expanded ? "Show less" : "View more work"}
-            </button>
-          </div>
+        {/* Work Cards Grid - show all 4 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {workItems.map((item, index) => (
+            <WorkCard
+              key={index}
+              title={item.title}
+              description={item.description}
+              ctaText={item.ctaText}
+              ctaUrl={item.ctaUrl}
+              img={item.img}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -128,50 +94,84 @@ export default function WorkSection() {
 
 function WorkCard({
   title,
-  role,
   description,
-  tag,
-  image,
+  ctaText,
+  ctaUrl,
+  img,
 }: {
   title: string;
-  role: string;
   description: string;
-  tag: string;
-  image: string;
+  ctaText: string;
+  ctaUrl: string;
+  img?: string;
 }) {
   return (
-    <a
-      href="#"
-      data-work-card
-      className="group rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden transition duration-300 will-change-transform hover:-translate-y-1 hover:shadow-[0_18px_50px_-35px_rgba(255,255,255,0.35)] focus-ring"
-    >
-      <div className="relative aspect-[16/10] bg-neutral-800">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15)), url('${image}')`,
-          }}
-        />
-        <div className="absolute inset-0 ring-1 ring-inset ring-white/10" />
-      </div>
+    <div className="group relative flex flex-col md:flex-row items-start gap-3 rounded-lg border border-white/8 bg-gradient-to-br from-white/[0.02] via-white/[0.01] to-transparent overflow-hidden transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_-18px_rgba(245,158,11,0.25)] hover:border-amber-400/25">
+      {/* Left accent bar */}
+      <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-amber-500 to-amber-400 opacity-100" />
 
-      <div className="p-6">
+      {/* Thumbnail (sizes unchanged) */}
+      {img && (
+        <div className="flex-shrink-0 w-full md:w-36 h-44 md:h-24 rounded-md overflow-hidden relative bg-slate-800">
+          <Image
+            src={img}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 144px"
+            className="object-cover"
+          />
+        </div>
+      )}
+
+      <div className="p-3 md:p-4 flex-1">
         <h3
-          className="text-xl font-semibold text-white"
-          style={{ fontFamily: "Playfair Display, serif" }}
+          className="text-lg lg:text-xl font-semibold mb-1 text-white"
+          style={{
+            fontFamily: "Playfair Display, serif",
+            letterSpacing: "-0.01em",
+          }}
         >
           {title}
         </h3>
-        <p className="mt-2 text-sm text-white/60">{role}</p>
-        <p className="mt-4 text-sm sm:text-[15px] leading-relaxed text-white/75">
+
+        <p
+          className="text-sm text-white/80 leading-relaxed mb-3"
+          style={{
+            fontFamily:
+              'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
+            lineHeight: "1.5",
+          }}
+        >
           {description}
         </p>
-        <div className="mt-5">
-          <span className="inline-flex items-center text-xs text-white/70 border border-white/15 px-2.5 py-1 rounded-md">
-            {tag}
-          </span>
-        </div>
+
+        <a
+          href={ctaUrl}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-amber-600/90 text-white text-sm font-medium hover:bg-amber-700 transition-colors duration-150"
+          style={{
+            fontFamily:
+              'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
+          }}
+        >
+          <span>{ctaText}</span>
+          <svg
+            className="w-3.5 h-3.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
       </div>
-    </a>
+
+      {/* Hover overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 via-amber-400/2 to-amber-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg" />
+    </div>
   );
 }

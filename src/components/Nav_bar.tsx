@@ -30,9 +30,9 @@ export default function Navbar() {
    Active section tracking
   -------------------------------- */
   useEffect(() => {
-    const sections = NAV_ITEMS
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
+    const sections = NAV_ITEMS.map((id) => document.getElementById(id)).filter(
+      Boolean,
+    ) as HTMLElement[];
 
     if (!sections.length) return;
 
@@ -44,7 +44,7 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: "0px 0px -55% 0px", threshold: 0.01 }
+      { rootMargin: "0px 0px -55% 0px", threshold: 0.01 },
     );
 
     sections.forEach((el) => observer.observe(el));
@@ -85,10 +85,8 @@ export default function Navbar() {
       ref={navbarRef}
       role="navigation"
       aria-label="Primary"
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out text-white ${
-        scrolled
-          ? "bg-black/45 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-out ${
+        scrolled ? "bg-white text-black shadow-sm" : "bg-transparent text-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
@@ -97,9 +95,10 @@ export default function Navbar() {
           <button
             onClick={() => scrollToId("home")}
             aria-label="Kadir Salami"
-            className="text-2xl md:text-3xl font-semibold tracking-tight hover:opacity-90 focus-ring hover-lift"
+            className="text-2xl md:text-3xl font-semibold tracking-tight hover:opacity-95 focus-ring hover-lift"
             style={{
-              fontFamily: "Playfair Display, serif",
+              fontFamily:
+                "Inter, Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif",
               letterSpacing: "-0.02em",
             }}
           >
@@ -107,44 +106,48 @@ export default function Navbar() {
           </button>
 
           {/* Desktop / Tablet Navigation */}
-          <ul className="hidden md:flex items-center gap-4 lg:gap-8 text-sm">
-            {[
-              ["home", "Overview"],
-              ["problem", "The Problem"],
-              ["about", "Leadership"],
-              ["work", "Selected work"],
-              ["thinking", "Insights"],
-              ["contact", "Connect"],
-            ].map(([id, label]) => {
-              const isActive = activeId === id;
-              return (
-                <li key={id}>
-                  <button
-                    onClick={() => scrollToId(id)}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`relative py-2 transition-colors duration-200 focus-ring hover-lift ${
-                      isActive
-                        ? "text-white"
-                        : "text-white/70 hover:text-white"
-                    }`}
-                  >
-                    <span className="relative z-10">{label}</span>
-                    <span
-                      className={`absolute left-0 -bottom-0.5 h-px w-full bg-white/80 transition-opacity ${
-                        isActive ? "opacity-100" : "opacity-0"
-                      }`}
-                    />
-                  </button>
-                </li>
-              );
-            })}
+          <ul
+            className="hidden md:flex items-center gap-6 lg:gap-10 text-sm"
+            style={{ fontFamily: "Inter, Roboto, sans-serif" }}
+          >
+              {[
+                ["home", "Overview"],
+                ["problem", "The Problem"],
+                ["about", "Leadership"],
+                ["work", "Selected work"],
+                ["thinking", "Insights"],
+                ["contact", "Connect"],
+              ].map(([id, label]) => {
+                const isActive = activeId === id;
+                return (
+                  <li key={id}>
+                    <button
+                      onClick={() => scrollToId(id)}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`relative py-2 px-4 rounded-md transition-colors duration-300 focus-ring hover-lift ${
+                        scrolled
+                          ? "text-black hover:bg-amber-50 hover:text-black"
+                          : "text-white hover:text-white"
+                      } ${isActive ? (scrolled ? "text-[#e07424] font-semibold" : "text-amber-300 font-semibold") : ""}`}
+                    >
+                      <span className="relative z-10">{label}</span>
+                      <span
+                        className={`absolute left-0 -bottom-0.5 h-px w-full bg-[#e07424] transition-opacity ${
+                          isActive ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
           </ul>
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
             <button
               onClick={() => scrollToId("contact")}
-              className="inline-flex items-center px-4 py-2 text-sm rounded-md bg-white/10 border border-white/15 backdrop-blur-md hover:bg-white/15 transition focus-ring hover-lift"
+              className="inline-flex items-center px-4 py-2 text-sm rounded-md bg-amber-600 text-white hover:bg-amber-700 transition focus-ring"
+              style={{ fontFamily: "var(--bold-paragraph)" }}
             >
               Start a conversation
             </button>
@@ -155,12 +158,12 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden inline-flex items-center justify-center rounded-md border border-white/20 bg-white/5 backdrop-blur-md p-2 hover:bg-white/10 transition focus-ring hover-lift"
+            className="md:hidden inline-flex items-center justify-center rounded-md border border-neutral-200 bg-transparent p-2 hover:bg-amber-50 transition focus-ring"
           >
             <div className="space-y-1.5">
-              <span className="block w-5 h-px bg-white/90" />
-              <span className="block w-5 h-px bg-white/90" />
-              <span className="block w-5 h-px bg-white/90" />
+              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
+              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
+              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
             </div>
           </button>
         </div>
@@ -169,9 +172,12 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
-        className="md:hidden bg-black/70 backdrop-blur-md hidden opacity-0 -translate-y-1 transition-[opacity,transform] duration-300 ease-out"
+        className="md:hidden bg-white hidden opacity-0 -translate-y-1 transition-[opacity,transform] duration-300 ease-out"
       >
-        <ul className="flex flex-col px-6 py-6 space-y-5 text-base text-white">
+        <ul
+          className="flex flex-col px-6 py-6 space-y-4 text-base text-black"
+          style={{ fontFamily: "Inter, Roboto, sans-serif" }}
+        >
           {[
             ["home", "Overview"],
             ["problem", "The Problem"],
@@ -183,7 +189,9 @@ export default function Navbar() {
             <li key={id}>
               <button
                 onClick={() => scrollToId(id)}
-                className="block w-full text-left opacity-80 hover:opacity-100 transition focus-ring hover-lift py-2 px-3 rounded-md hover:bg-white/10"
+                className={`block w-full text-left transition-colors duration-150 focus-ring py-3 px-3 rounded-md ${
+                  activeId === id ? "bg-amber-50 text-[#e07424] font-semibold" : "text-black hover:bg-amber-50 hover:text-[#e07424]"
+                }`}
               >
                 {label}
               </button>
@@ -192,7 +200,8 @@ export default function Navbar() {
           <li className="pt-4">
             <button
               onClick={() => scrollToId("contact")}
-              className="inline-flex w-full justify-center px-3 py-2.5 rounded-md border border-white/20 bg-white/10 hover:bg-white/15 transition focus-ring hover-lift"
+              className="inline-flex w-full justify-center px-3 py-2.5 rounded-md bg-amber-600 text-white hover:bg-amber-700 transition focus-ring"
+              style={{ fontFamily: "var(--bold-paragraph)" }}
             >
               Start a conversation
             </button>

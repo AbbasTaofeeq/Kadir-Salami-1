@@ -16,7 +16,7 @@ export default function Hero() {
       setTimeout(() => {
         el.classList.remove("opacity-0", "translate-y-2");
         el.classList.add("opacity-100", "translate-y-0");
-      }, 120 + i * 120);
+      }, 150 + i * 150);
     });
   }, []);
 
@@ -27,13 +27,13 @@ export default function Hero() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769971152/WAK06804.jpg_gwylyj.jpg')",
+          "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve/v1770222269/WhatsApp_Image_2026-02-04_at_17.23.55_hfw4vz.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/70 to-black/95" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-black/60 to-black/70" />
 
       {/* Content */}
       <div className="relative z-20 min-h-screen flex items-center">
@@ -42,7 +42,8 @@ export default function Hero() {
             {/* Eyebrow */}
             <p
               data-hero-animate
-              className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-[0.22em] uppercase text-white/65 opacity-0 translate-y-2 transition-all duration-700"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm tracking-[0.22em] uppercase text-white/70 opacity-0 translate-y-2 transition-all duration-700"
+              style={{ fontFamily: "var(--bold-paragraph)" }}
             >
               <span className="h-px w-10 bg-white/35" />
               Coherence-led leadership
@@ -51,8 +52,8 @@ export default function Hero() {
             {/* Headline */}
             <h1
               data-hero-animate
-              className="mt-4 text-white font-semibold tracking-tight leading-tight text-2xl sm:text-xl md:text-xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700"
-              style={{ fontFamily: "Playfair Display, serif" }}
+              className="mt-4 text-white font-extrabold tracking-tight leading-tight text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl opacity-0 translate-y-2 transition-all duration-700"
+              style={{ fontFamily: "var(--fancy-heading)" }}
             >
               I help organizations align strategy, technology, and people - so transformation actually works.
             </h1>
@@ -60,7 +61,8 @@ export default function Hero() {
             {/* Subcopy */}
             <p
               data-hero-animate
-              className="mt-6 text-slate-200 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 opacity-0 translate-y-2 transition-all duration-700"
+              className="mt-6 text-slate-200 text-base sm:text-lg md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 opacity-0 translate-y-2 transition-all duration-700"
+              style={{ fontFamily: "var(--bold-paragraph)" }}
             >
               Most transformation fails because everything moves in isolation. <br />
               <span className="text-white font-semibold tracking-wide uppercase">Coherence</span> is what turns effort into results.
@@ -74,7 +76,8 @@ export default function Hero() {
               {/* Primary CTA */}
               <a
                 href="#work"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium text-white bg-white/15 border border-white/25 backdrop-blur-md transition hover:bg-white/25 hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-35px_rgba(255,255,255,0.35)] focus-ring hover-lift"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 transition focus-ring"
+                style={{ fontFamily: "var(--bold-paragraph)" }}
               >
                 See How I Work
               </a>
@@ -82,7 +85,8 @@ export default function Hero() {
               {/* Secondary CTA – Desktop */}
               <a
                 href="#thinking"
-                className="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-white/80 border border-white/40 transition-all duration-300 hover:text-white hover:border-white hover:gap-3 hover:translate-x-1 focus-ring hover-lift"
+                className="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-amber-600 bg-white border border-amber-600 transition-all duration-300 hover:bg-amber-600 hover:text-white focus-ring"
+                style={{ fontFamily: "var(--bold-paragraph)" }}
               >
                 Read the thinking
                 <span aria-hidden className="transition-transform duration-300">
@@ -94,10 +98,10 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => setShowMobileSecondary((v) => !v)}
-                className="sm:hidden text-xs text-white/70 underline underline-offset-4 focus-ring hover-lift py-2 px-3 rounded-md hover:bg-white/10"
+                className="sm:hidden text-sm text-white/95 px-3 py-2 rounded-md focus-ring hover:bg-white/10"
                 aria-label="Toggle secondary action"
               >
-                More
+                Read Insights
               </button>
             </div>
 
