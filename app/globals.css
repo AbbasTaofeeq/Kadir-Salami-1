@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700;900&display=swap');
 @import "tailwindcss";
+
+/* ================================
+   Custom CSS Variables
+================================ */
+:root {
+  --primary-50: #fef7ee;
+  --primary-100: #fdedd7;
+  --primary-200: #fbd9ae;
+  --primary-300: #f8c07d;
+  --primary-400: #f4a44c;
+  --primary-500: #f08c3a;
+  --primary-600: #e07424;
+  --primary-700: #b85c1c;
+  --primary-800: #934a1a;
+  --primary-900: #773e19;
+  
+  --fancy-heading: 'Playfair Display', serif;
+  --bold-paragraph: 'Inter', 'Roboto', sans-serif;
+}
 
 /* ================================
    Base Layer – Global Defaults
@@ -14,9 +34,23 @@
     margin: 0;
   }
 
-  /* Add cursor pointer to all interactive elements */
+  p {
+    @apply font-sans text-base leading-relaxed text-neutral-800;
+    font-family: var(--bold-paragraph);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fancy-heading);
+    font-weight: 700;
+  }
+
+
+/* Add cursor pointer to all interactive elements */
   button, [role="button"], a, input, textarea, select {
-    @apply cursor-pointer;
+    cursor: pointer;
   }
 
   /* Smooth scrolling for all browsers */
@@ -26,7 +60,8 @@
 
   /* Better focus styles for accessibility */
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-white/50;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
   }
 
   /* Custom scrollbar for webkit browsers */
@@ -35,20 +70,22 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-900;
+    background-color: #111827; /* neutral-900 */
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-600 rounded-full;
+    background-color: #4b5563; /* neutral-600 */
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-500;
+    background-color: #6b7280; /* neutral-500 */
   }
 
   /* Selection styling */
   ::selection {
-    @apply bg-neutral-200 text-neutral-900;
+    background-color: #e5e7eb; /* neutral-200 */
+    color: #111827; /* neutral-900 */
   }
 
   /* Reduce motion for users who prefer it */
@@ -95,11 +132,34 @@
 
   /* Text selection styling */
   ::selection {
-    @apply bg-neutral-200 text-neutral-900;
+    background-color: #e5e7eb; /* neutral-200 */
+    color: #111827; /* neutral-900 */
   }
 
   /* Focus visible improvements */
   .focus-ring {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900;
+    outline: none;
   }
+  .focus-ring:focus-visible {
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.5),
+      0 0 0 4px #111827;
+    outline-offset: 2px;
+  }
+
+  /* Custom color utilities */
+  .text-amber-600 { color: var(--primary-600); }
+  .text-amber-500 { color: var(--primary-500); }
+  .text-amber-400 { color: var(--primary-400); }
+  .bg-amber-600 { background-color: var(--primary-600); }
+  .bg-amber-500 { background-color: var(--primary-500); }
+  .bg-amber-400 { background-color: var(--primary-400); }
+  .bg-amber-50 { background-color: var(--primary-50); }
+   
+  .border-amber-600 { border-color: var(--primary-600); }
+  .border-amber-100 { border-color: var(--primary-100); }
+  .bg-amber-100 { background-color: var(--primary-100); }
 }
+
+ 
+ 

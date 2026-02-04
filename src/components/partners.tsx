@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Partners() {
   return (
     <section
@@ -13,15 +15,13 @@ export default function Partners() {
 
           <h2
             className="text-3xl sm:text-4xl lg:text-4xl font-semibold leading-tight text-neutral-900 mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--fancy-heading)" }}
           >
             Trusted by leading institutions
           </h2>
 
           <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-3xl mx-auto">
-            Our work is strengthened by partnerships with world-class
-            organizations who share our commitment to building coherent systems
-            that drive lasting impact and sustainable growth.
+            My work is strengthened by partnerships with world-class organizations that share my commitment to building coherent systems - systems that drive lasting impact and sustainable growth.
           </p>
         </div>
 
@@ -36,9 +36,11 @@ export default function Partners() {
             <div className="flex items-center gap-12 animate-slide-slow hover:animation-pause">
               {[...logos, ...logos].map((logo, index) => (
                 <div key={index} className="flex-shrink-0 group">
-                  <img
+                  <Image
                     src={logo.src}
                     alt={logo.alt}
+                    width={64}
+                    height={64}
                     className="h-12 sm:h-14 lg:h-16 w-auto opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 hover:scale-110"
                   />
                 </div>

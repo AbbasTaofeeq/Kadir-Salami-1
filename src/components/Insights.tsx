@@ -66,20 +66,20 @@ export default function InsightsSection() {
     <section id="thinking">
       <section
         id="thinking-modal"
-        className="w-full bg-neutral-100 text-neutral-900 py-20 sm:py-24 lg:py-28"
+        className="w-full bg-gradient-to-b from-neutral-950 via-black to-neutral-950 text-white py-16 sm:py-20 lg:py-24"
       >
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
           <div className="max-w-3xl">
-            <p className="text-xs tracking-[0.22em] uppercase text-neutral-500">
+            <p className="text-xs tracking-[0.22em] uppercase text-neutral-400">
               Insights
             </p>
             <h2
-              className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight"
+              className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-white"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               Clarity before scale
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-neutral-700">
+            <p className="mt-4 text-base sm:text-lg text-white/80">
               Coherence over noise. Alignment before acceleration. Thinking shaped
               by real systems and long-view outcomes.
             </p>
@@ -126,7 +126,7 @@ The real work of leadership is integration. Aligning language with intent. Desig
               ref={overlayRef}
               id="modalOverlay"
               onClick={closeModal}
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 transition-opacity duration-300"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"
             />
 
             <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -138,7 +138,7 @@ The real work of leadership is integration. Aligning language with intent. Desig
                 <button
                   id="modalClose"
                   onClick={closeModal}
-                  className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 transition-colors duration-200 focus-ring hover-lift"
+                  className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-black hover:bg-black/80 transition-colors duration-200 focus-ring hover-lift"
                 >
                   ✕
                 </button>
@@ -172,7 +172,7 @@ The real work of leadership is integration. Aligning language with intent. Desig
                       href={activeInsight.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-blue-600 transition-colors duration-200 focus-ring hover-lift"
+                      className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-amber-600 transition-colors duration-200 focus-ring hover-lift"
                     >
                       Read on LinkedIn →
                     </a>
@@ -204,23 +204,23 @@ function InsightCard({
   excerpt: string;
   content: string;
   linkedin: string;
-  onRead: (data: any) => void;
+  onRead: (data: InsightData) => void;
 }) {
   return (
     <div
       data-insight-card
-      className="group rounded-xl border border-neutral-200 bg-white/70 backdrop-blur-sm p-6 shadow-[0_18px_50px_-45px_rgba(0,0,0,0.4)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_-50px_rgba(0,0,0,0.35)]"
+      className="group rounded-xl border border-neutral-800 bg-neutral-900/70 p-6 shadow-[0_18px_50px_-45px_rgba(0,0,0,0.6)] transition hover:-translate-y-1 hover:shadow-[0_24px_70px_-50px_rgba(0,0,0,0.65)]"
     >
-      <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
+      <p className="text-xs uppercase tracking-[0.18em] text-neutral-400">
         {category}
       </p>
       <h3
-        className="mt-3 text-xl font-semibold text-neutral-900"
+        className="mt-3 text-xl font-semibold text-white"
         style={{ fontFamily: "Playfair Display, serif" }}
       >
         {title}
       </h3>
-      <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-neutral-700">
+      <p className="mt-3 text-sm sm:text-[15px] leading-relaxed text-neutral-300">
         {excerpt}
       </p>
 
@@ -229,7 +229,7 @@ function InsightCard({
         onClick={() =>
           onRead({ category, title, content, linkedin })
         }
-        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-neutral-800 underline underline-offset-4 decoration-neutral-400 hover:text-neutral-900 transition-all duration-300 hover:gap-3 hover:translate-x-1 focus-ring hover-lift"
+        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 decoration-neutral-600 hover:text-amber-400 transition-all duration-300 hover:gap-3 hover:translate-x-1 focus-ring"
       >
         Read the thinking <span>→</span>
       </button>
