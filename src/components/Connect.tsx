@@ -285,7 +285,7 @@ export default function Contact() {
                       <button 
                         ref={submitBtnRef}
                         type="submit" 
-                        className="w-full px-6 py-3 cursor-pointer bg-white text-neutral-900 font-medium rounded-xl hover:bg-white/90 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-15px_rgba(255,255,255,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-sm"
+                        className="w-full px-6 py-3 cursor-pointer bg-amber-400 text-neutral-900 font-medium rounded-xl hover:bg-amber-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-15px_rgba(255,255,255,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 text-sm"
                       >
                         <span ref={btnTextRef}>Send Message</span>
                         <span ref={btnLoadingRef} className="hidden">
