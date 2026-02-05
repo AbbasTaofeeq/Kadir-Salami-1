@@ -27,7 +27,7 @@ export default function Hero() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve/v1770222269/WhatsApp_Image_2026-02-04_at_17.23.55_hfw4vz.jpg')",
+          "url('https://res.cloudinary.com/drktuxjgs/image/upload/v1770289637/Screenshot_1_vnjquw.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
