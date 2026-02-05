@@ -76,19 +76,22 @@ export default function Hero() {
               {/* Primary CTA */}
               <a
                 href="#work"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 transition focus-ring"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-md text-sm font-medium text-white bg-amber-600 hover:bg-amber-700 transition focus-ring gap-2 inline-flex items-center"
                 style={{ fontFamily: "var(--bold-paragraph)" }}
               >
-                See How I Work
+                See How I Drive Change
+                 <span aria-hidden className="transition-transform duration-300">
+                  →
+                </span>
               </a>
 
               {/* Secondary CTA – Desktop */}
               <a
-                href="#thinking"
+                href="#about"
                 className="hidden sm:inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-amber-600 bg-white border border-amber-600 transition-all duration-300 hover:bg-amber-600 hover:text-white focus-ring"
                 style={{ fontFamily: "var(--bold-paragraph)" }}
               >
-                Read the thinking
+                My Perspective
                 <span aria-hidden className="transition-transform duration-300">
                   →
                 </span>

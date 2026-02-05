@@ -56,7 +56,7 @@ export default function WorkSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Building systems, not just products
+            Building Systems, Not Just Products
           </h1>
           <div className="mx-auto h-0.5 w-16 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 mb-3" />
           <p
@@ -71,7 +71,7 @@ export default function WorkSection() {
         </div>
 
         {/* Work Cards Grid - show all 4 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6">
           {workItems.map((item, index) => (
             <WorkCard
               key={index}

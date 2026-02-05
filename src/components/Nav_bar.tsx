@@ -110,36 +110,36 @@ export default function Navbar() {
             className="hidden md:flex items-center gap-1 md:gap-2 lg:gap-6 xl:gap-8 text-xs md:text-xs lg:text-sm py-1"
             style={{ fontFamily: "Inter, Roboto, sans-serif" }}
           >
-              {[
-                ["home", "Overview"],
-                ["problem", "The Problem"],
-                ["about", "My Perspective"],
-                ["work", "Selected Work"],
-                ["thinking", "Insights"],
-                ["contact", "Connect"],
-              ].map(([id, label]) => {
-                const isActive = activeId === id;
-                return (
-                  <li key={id} className="shrink-0">
-                    <button
-                      onClick={() => scrollToId(id)}
-                      aria-current={isActive ? "page" : undefined}
-                      className={`relative py-2 px-2 md:px-2.5 lg:px-4 rounded-md transition-colors duration-300 focus-ring hover-lift whitespace-nowrap ${
-                        scrolled
-                          ? "text-black hover:bg-amber-50 hover:text-black"
-                          : "text-white hover:text-white"
-                      } ${isActive ? (scrolled ? "text-[#e07424] font-semibold" : "text-amber-300 font-semibold") : ""}`}
-                    >
-                      <span className="relative z-10">{label}</span>
-                      <span
-                        className={`absolute left-0 -bottom-0.5 h-px w-full bg-[#e07424] transition-opacity ${
-                          isActive ? "opacity-100" : "opacity-0"
-                        }`}
-                      />
-                    </button>
-                  </li>
-                );
-              })}
+            {[
+              ["home", "Overview"],
+              ["problem", "The Problem"],
+              ["work", "Proof of Impact"],
+              ["about", "My Perspective"],
+              ["thinking", "Insights"],
+              ["contact", "Connect"],
+            ].map(([id, label]) => {
+              const isActive = activeId === id;
+              return (
+                <li key={id} className="shrink-0">
+                  <button
+                    onClick={() => scrollToId(id)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`relative py-2 px-2 md:px-2.5 lg:px-4 rounded-md transition-colors duration-300 focus-ring hover-lift whitespace-nowrap ${
+                      scrolled
+                        ? "text-black hover:bg-amber-50 hover:text-black"
+                        : "text-white hover:text-white"
+                    } ${isActive ? (scrolled ? "text-[#e07424] font-semibold" : "text-amber-300 font-semibold") : ""}`}
+                  >
+                    <span className="relative z-10">{label}</span>
+                    <span
+                      className={`absolute left-0 -bottom-0.5 h-px w-full bg-[#e07424] transition-opacity ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Desktop CTA - hidden on tablet to save space, show from lg */}
@@ -161,9 +161,27 @@ export default function Navbar() {
             className="md:hidden inline-flex items-center justify-center rounded-md border border-neutral-200 bg-transparent p-2 hover:bg-amber-50 transition focus-ring"
           >
             <div className="space-y-1.5">
-              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
-              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
-              <span className={scrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
+              <span
+                className={
+                  scrolled
+                    ? "block w-5 h-px bg-black"
+                    : "block w-5 h-px bg-white/90"
+                }
+              />
+              <span
+                className={
+                  scrolled
+                    ? "block w-5 h-px bg-black"
+                    : "block w-5 h-px bg-white/90"
+                }
+              />
+              <span
+                className={
+                  scrolled
+                    ? "block w-5 h-px bg-black"
+                    : "block w-5 h-px bg-white/90"
+                }
+              />
             </div>
           </button>
         </div>
@@ -181,8 +199,8 @@ export default function Navbar() {
           {[
             ["home", "Overview"],
             ["problem", "The Problem"],
+            ["work", "Proof of Impact"],
             ["about", "My Perspective"],
-            ["work", "Selected Work"],
             ["thinking", "Insights"],
             ["contact", "Connect"],
           ].map(([id, label]) => (
@@ -190,7 +208,9 @@ export default function Navbar() {
               <button
                 onClick={() => scrollToId(id)}
                 className={`block w-full text-left transition-colors duration-150 focus-ring py-3 px-3 rounded-md ${
-                  activeId === id ? "bg-amber-50 text-[#e07424] font-semibold" : "text-black hover:bg-amber-50 hover:text-[#e07424]"
+                  activeId === id
+                    ? "bg-amber-50 text-[#e07424] font-semibold"
+                    : "text-black hover:bg-amber-50 hover:text-[#e07424]"
                 }`}
               >
                 {label}

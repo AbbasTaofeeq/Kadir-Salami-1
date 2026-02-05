@@ -70,18 +70,17 @@ export default function InsightsSection() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-3xl">
-            <p className="text-xs tracking-[0.22em] uppercase text-neutral-400">
+            <p className="text-xs tracking-[0.22em] text-amber-600 uppercase text-neutral-400">
               Insights
             </p>
             <h2
               className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight text-white"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
-              Clarity before scale
+              My Ideas and Reflection
             </h2>
             <p className="mt-4 text-base sm:text-lg text-white/80">
-              Coherence over noise. Alignment before acceleration. Thinking shaped
-              by real systems and long-view outcomes.
+              Ideas and reflections on systems, leadership and meaningful transformation.
             </p>
           </div>
 
@@ -229,7 +228,7 @@ function InsightCard({
         onClick={() =>
           onRead({ category, title, content, linkedin })
         }
-        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 decoration-neutral-600 hover:text-amber-400 transition-all duration-300 hover:gap-3 hover:translate-x-1 focus-ring"
+        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-amber-500 underline underline-offset-4 decoration-neutral-600 hover:text-amber-400 transition-all duration-300 hover:gap-3 hover:translate-x-1 focus-ring"
       >
         Read the thinking <span>→</span>
       </button>

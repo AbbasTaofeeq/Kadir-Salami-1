@@ -22,7 +22,7 @@ export default function LeadershipSection() {
                   className="text-sm text-neutral-700 italic transition-colors duration-300 hover:text-neutral-900"
                   style={{ fontFamily: 'var(--fancy-heading)' }}
                 >
-                  &quot;Calm is a strategy.&quot;
+                  &quot;Focus Drives Change.&quot;
                 </p>
               </div>
             </div>

@@ -10,7 +10,7 @@ export default function Partners() {
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <p className="text-xs tracking-[0.22em] uppercase text-neutral-500 mb-4">
-            Partners & Collaborators
+            Partners & <span className="text-amber-600 ">Collaborators</span>
           </p>
 
           <h2

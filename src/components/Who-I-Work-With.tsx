@@ -43,7 +43,7 @@ export default function WhoIWorkWithSection() {
 							letterSpacing: "-0.02em",
 						}}
 					>
-						Who I Work With
+						Leaders I Partner With
 					</h1>
 					<div className="mx-auto h-0.5 w-20 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400" />
 					<p
@@ -53,9 +53,7 @@ export default function WhoIWorkWithSection() {
 								'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
 						}}
 					>
-						I partner with leaders who are responsible for shaping direction,
-						making hard trade-offs, and sustaining meaningful change inside
-						complex organisations.
+						I work alongside leaders who shape the future, navigate key decisions, and sustain meaningful transformation in their institutions.
 					</p>
 				</div>
 

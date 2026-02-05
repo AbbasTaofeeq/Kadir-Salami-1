@@ -13,7 +13,7 @@ export default function SeeHowIWorkSection() {
             className="text-3xl sm:text-4xl md:text-4xl font-extrabold tracking-tight mb-3 text-white"
             style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.02em' }}
           >
-            See How I Work
+            How I Drive Change 
           </h1>
           <div className="mx-auto h-0.5 w-24 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400" />
         </div>
@@ -160,21 +160,20 @@ export default function SeeHowIWorkSection() {
                     'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
                 }}
               >
-                Every engagement is built around a small number of high-leverage working sessions, clear artifacts, and a
-                cadence that respects the realities of leading a complex institution.
+                My process is simple: we meet with purpose, create outcomes that matter, and keep momentum without overwhelming the people who carry the responsibility of change.
               </p>
             </div>
 
             <div>
               <a
-                href="/selected-work"
+                href="#work"
                 className="inline-flex items-center justify-center rounded-md bg-amber-600 hover:bg-amber-700 transition focus-ring px-4 py-2.5 text-xs sm:text-sm font-medium text-white shadow-md hover:shadow-lg transition-colors transition-shadow duration-150"
                 style={{
                   fontFamily:
                     'Inter, Roboto, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif',
                 }}
               >
-                Explore Selected Work
+                Explore Proof of Impact
               </a>
             </div>
           </div>

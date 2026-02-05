@@ -13,7 +13,7 @@ export default function ProblemSection() {
             className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-1"
             style={{ fontFamily: 'var(--fancy-heading)', letterSpacing: '-0.02em' }}
           >
-            What’s Actually Broken
+            The Problems Beneath the Surface
           </h1>
           <div className="inline-block h-0.5 w-12 rounded-full bg-amber-600" />
         </div>
