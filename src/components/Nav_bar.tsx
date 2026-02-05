@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const NAV_ITEMS = ["home", "problem", "about", "work", "thinking", "contact"];
 const SCROLL_THRESHOLD = 56;
@@ -102,7 +103,13 @@ export default function Navbar() {
               letterSpacing: "-0.02em",
             }}
           >
-            Kadir Salami
+            <Image
+              src="https://res.cloudinary.com/drktuxjgs/image/upload/v1770302201/FullLogo_NoBuffer-removebg-preview_jl9edl.png"
+              alt="Kadir Salami"
+              width={40}
+              height={40}
+              className="w-25 h-15 md:w-30 md:h-12 md:w-30 md:h-16 object-contain"
+            />
           </button>
 
           {/* Desktop / Tablet Navigation - tighter on tablet (768–1024) */}
