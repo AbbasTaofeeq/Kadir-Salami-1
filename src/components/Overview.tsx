@@ -112,10 +112,10 @@ export default function Hero() {
             {showMobileSecondary && (
               <div className="mt-4 sm:hidden">
                 <a
-                  href="#thinking"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium text-white/80 border border-white/40 transition hover:text-white hover:border-white focus-ring hover-lift"
+                  href="#about"
+                  className="inline-flex items-center gap-2  px-6 py-3 rounded-md text-sm font-medium text-amber-600 bg-white border border-amber-600 transition-all duration-300 hover:bg-amber-600 hover:text-white focus-ring hover-lift"
                 >
-                  See How I Work →
+                  My Perspective →
                 </a>
               </div>
             )}
