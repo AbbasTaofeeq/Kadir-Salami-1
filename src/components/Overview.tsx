@@ -46,7 +46,7 @@ export default function Hero() {
               style={{ fontFamily: "var(--bold-paragraph)" }}
             >
               <span className="h-px w-10 bg-white/35" />
-              Coherence-led leadership
+              Outcome driven leadership
             </p>
 
             {/* Headline */}
