@@ -134,7 +134,7 @@ export default function SeeHowIWorkSection() {
           <div className="flex flex-col gap-6 lg:gap-8">
             <div className="relative overflow-hidden rounded-2xl border border-neutral-800/80 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black shadow-md">
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 via-transparent to-amber-400/10 pointer-events-none" />
-              {/* Placeholder image block; replace with real image when available */}
+               
               <div className="aspect-[4/3] w-full relative overflow-hidden rounded-2xl">
                 <Image
                   src="https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769971152/WAK06804.jpg_gwylyj.jpg"
@@ -143,7 +143,7 @@ export default function SeeHowIWorkSection() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/30" />
+                <div className="absolute inset-0" />
                 <div className="absolute inset-0 flex items-center justify-center px-6">
                   <div className="bg-black/30 rounded-md p-4">
                   
