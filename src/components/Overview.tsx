@@ -27,13 +27,13 @@ export default function Hero() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/drktuxjgs/image/upload/v1770289637/Screenshot_1_vnjquw.png')",
+          "url('https://res.cloudinary.com/daqmbfctv/image/upload/v1770547083/New-salami-hero-image_npvd4u_jkp4ym.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-black/60 to-black/90" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
 
       {/* Content */}
       <div className="relative z-20 min-h-screen flex items-center">
