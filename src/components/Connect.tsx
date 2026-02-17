@@ -130,7 +130,7 @@ export default function Contact() {
         } catch (error) {
           console.error("EmailJS Error:", error);
           showMessage(
-            "Sorry, there was an error sending your message. Please try again later or email directly at abbastaofeeq.001@gmail.com",
+            "Sorry, there was an error sending your message. Please try again later or email directly at me@kadrisalami.com",
             false,
           );
         } finally {
