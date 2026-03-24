@@ -8,12 +8,14 @@ import Partners from "@/src/components/partners";
 import Connect from "@/src/components/Connect";
 import SeeHowIWorkSection from "@/src/components/SeeHowIwork";
 import WhoIWorkWithSection from "@/src/components/Who-I-Work-With";
+// import Pages from "@/src/components/pages";
 
 export default function Page() {
   return (
     <>
       <Nav_bar />
       <Overview />
+      {/* <Pages /> */}
       <The_problem />
       <SeeHowIWorkSection />
       <WhoIWorkWithSection />

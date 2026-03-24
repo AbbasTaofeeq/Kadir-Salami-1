@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const NAV_ITEMS = ["home", "problem", "about", "work", "thinking", "contact"];
 const SCROLL_THRESHOLD = 56;
@@ -13,6 +15,10 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHomepage = pathname === "/";
 
   /* ------------------------------
    Scroll background state
@@ -28,9 +34,11 @@ export default function Navbar() {
   }, []);
 
   /* ------------------------------
-   Active section tracking
+   Active section tracking (homepage only)
   -------------------------------- */
   useEffect(() => {
+    if (!isHomepage) return;
+
     const sections = NAV_ITEMS.map((id) => document.getElementById(id)).filter(
       Boolean,
     ) as HTMLElement[];
@@ -50,15 +58,19 @@ export default function Navbar() {
 
     sections.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [isHomepage]);
 
   /* ------------------------------
-   Smooth scroll handler
+   Smooth scroll handler (homepage) or navigate (other pages)
   -------------------------------- */
   const scrollToId = (id: string) => {
     setMobileOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (isHomepage) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      router.push(`/#${id}`);
+    }
   };
 
   /* ------------------------------
@@ -81,28 +93,36 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
+  // On non-homepage, always show scrolled style (white bg)
+  const effectiveScrolled = !isHomepage ? true : scrolled;
+
+  const desktopNavItems: [string, string, string | null][] = [
+    ["home", "Overview", null],
+    ["problem", "The Problem", null],
+    ["work", "Proof of Impact", null],
+    ["about", "My Perspective", null],
+    ["thinking", "Insights", null],
+    ["blog", "Blog", "/blog"],
+    ["contact", "Connect", null],
+  ];
+
+  const mobileNavItems: [string, string, string | null][] = desktopNavItems;
+
   return (
     <nav
       ref={navbarRef}
       role="navigation"
       aria-label="Primary"
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-out ${
-        scrolled ? "bg-white text-black shadow-sm" : "bg-transparent text-white"
+        effectiveScrolled
+          ? "bg-white text-black shadow-sm"
+          : "bg-transparent text-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
-          {/* Logo - smaller on tablet so nav fits */}
-          <button
-            onClick={() => scrollToId("home")}
-            aria-label="Kadir Salami"
-            className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-semibold tracking-tight hover:opacity-95 focus-ring hover-lift shrink-0"
-            style={{
-              fontFamily:
-                "Inter, Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif",
-              letterSpacing: "-0.02em",
-            }}
-          >
+          {/* Logo */}
+          <Link href="/" aria-label="Kadir Salami" className="shrink-0">
             <Image
               src="https://res.cloudinary.com/drktuxjgs/image/upload/v1770302201/FullLogo_NoBuffer-removebg-preview_jl9edl.png"
               alt="Kadir Salami"
@@ -110,32 +130,65 @@ export default function Navbar() {
               height={40}
               className="w-25 h-15 md:w-30 md:h-12 md:w-30 md:h-16 object-contain"
             />
-          </button>
+          </Link>
 
-          {/* Desktop / Tablet Navigation - tighter on tablet (768–1024) */}
+          {/* Desktop Navigation */}
           <ul
-            className="hidden md:flex items-center gap-1 md:gap-2 lg:gap-6 xl:gap-8 text-xs md:text-xs lg:text-sm py-1"
+            className="hidden md:flex items-center gap-1 md:gap-1.5 lg:gap-4 xl:gap-6 text-xs md:text-xs lg:text-sm py-1"
             style={{ fontFamily: "Inter, Roboto, sans-serif" }}
           >
-            {[
-              ["home", "Overview"],
-              ["problem", "The Problem"],
-              ["work", "Proof of Impact"],
-              ["about", "My Perspective"],
-              ["thinking", "Insights"],
-              ["contact", "Connect"],
-            ].map(([id, label]) => {
-              const isActive = activeId === id;
+            {desktopNavItems.map(([id, label, href]) => {
+              const isBlogLink = id === "blog";
+              const isBlogActive = pathname?.startsWith("/blog");
+              const isActive = isBlogLink
+                ? isBlogActive
+                : isHomepage && activeId === id;
+
+              if (href) {
+                return (
+                  <li key={id} className="shrink-0">
+                    <Link
+                      href={href}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`relative py-2 px-2 md:px-2 lg:px-3 rounded-md transition-colors duration-300 whitespace-nowrap inline-flex items-center ${
+                        effectiveScrolled
+                          ? "text-black hover:bg-amber-50 hover:text-black"
+                          : "text-white hover:text-white"
+                      } ${
+                        isActive
+                          ? effectiveScrolled
+                            ? "text-[#e07424] font-semibold"
+                            : "text-amber-300 font-semibold"
+                          : ""
+                      }`}
+                    >
+                      <span className="relative z-10">{label}</span>
+                      <span
+                        className={`absolute left-0 -bottom-0.5 h-px w-full bg-[#e07424] transition-opacity ${
+                          isActive ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    </Link>
+                  </li>
+                );
+              }
+
               return (
                 <li key={id} className="shrink-0">
                   <button
                     onClick={() => scrollToId(id)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`relative py-2 px-2 md:px-2.5 lg:px-4 rounded-md transition-colors duration-300 focus-ring hover-lift whitespace-nowrap ${
-                      scrolled
+                    className={`relative py-2 px-2 md:px-2 lg:px-3 rounded-md transition-colors duration-300 whitespace-nowrap ${
+                      effectiveScrolled
                         ? "text-black hover:bg-amber-50 hover:text-black"
                         : "text-white hover:text-white"
-                    } ${isActive ? (scrolled ? "text-[#e07424] font-semibold" : "text-amber-300 font-semibold") : ""}`}
+                    } ${
+                      isActive
+                        ? effectiveScrolled
+                          ? "text-[#e07424] font-semibold"
+                          : "text-amber-300 font-semibold"
+                        : ""
+                    }`}
                   >
                     <span className="relative z-10">{label}</span>
                     <span
@@ -149,7 +202,7 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Desktop CTA - hidden on tablet to save space, show from lg */}
+          {/* Desktop CTA */}
           <div className="hidden lg:block shrink-0">
             <button
               onClick={() => scrollToId("contact")}
@@ -168,27 +221,9 @@ export default function Navbar() {
             className="md:hidden inline-flex items-center justify-center rounded-md border border-neutral-200 bg-transparent p-2 hover:bg-amber-50 transition focus-ring"
           >
             <div className="space-y-1.5">
-              <span
-                className={
-                  scrolled
-                    ? "block w-5 h-px bg-black"
-                    : "block w-5 h-px bg-white/90"
-                }
-              />
-              <span
-                className={
-                  scrolled
-                    ? "block w-5 h-px bg-black"
-                    : "block w-5 h-px bg-white/90"
-                }
-              />
-              <span
-                className={
-                  scrolled
-                    ? "block w-5 h-px bg-black"
-                    : "block w-5 h-px bg-white/90"
-                }
-              />
+              <span className={effectiveScrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
+              <span className={effectiveScrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
+              <span className={effectiveScrolled ? "block w-5 h-px bg-black" : "block w-5 h-px bg-white/90"} />
             </div>
           </button>
         </div>
@@ -203,27 +238,46 @@ export default function Navbar() {
           className="flex flex-col px-6 py-6 space-y-4 text-base text-black"
           style={{ fontFamily: "Inter, Roboto, sans-serif" }}
         >
-          {[
-            ["home", "Overview"],
-            ["problem", "The Problem"],
-            ["work", "Proof of Impact"],
-            ["about", "My Perspective"],
-            ["thinking", "Insights"],
-            ["contact", "Connect"],
-          ].map(([id, label]) => (
-            <li key={id}>
-              <button
-                onClick={() => scrollToId(id)}
-                className={`block w-full text-left transition-colors duration-150 focus-ring py-3 px-3 rounded-md ${
-                  activeId === id
-                    ? "bg-amber-50 text-[#e07424] font-semibold"
-                    : "text-black hover:bg-amber-50 hover:text-[#e07424]"
-                }`}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
+          {mobileNavItems.map(([id, label, href]) => {
+            const isBlogLink = id === "blog";
+            const isBlogActive = pathname?.startsWith("/blog");
+            const isActive = isBlogLink
+              ? isBlogActive
+              : isHomepage && activeId === id;
+
+            if (href) {
+              return (
+                <li key={id}>
+                  <Link
+                    href={href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`block w-full text-left transition-colors duration-150 focus-ring py-3 px-3 rounded-md ${
+                      isActive
+                        ? "bg-amber-50 text-[#e07424] font-semibold"
+                        : "text-black hover:bg-amber-50 hover:text-[#e07424]"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            }
+
+            return (
+              <li key={id}>
+                <button
+                  onClick={() => scrollToId(id)}
+                  className={`block w-full text-left transition-colors duration-150 focus-ring py-3 px-3 rounded-md ${
+                    isActive
+                      ? "bg-amber-50 text-[#e07424] font-semibold"
+                      : "text-black hover:bg-amber-50 hover:text-[#e07424]"
+                  }`}
+                >
+                  {label}
+                </button>
+              </li>
+            );
+          })}
           <li className="pt-4">
             <button
               onClick={() => scrollToId("contact")}
