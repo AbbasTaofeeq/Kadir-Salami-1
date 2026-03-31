@@ -10,7 +10,7 @@ export default function LeadershipSection() {
               <div 
                 className="h-full w-full bg-center bg-cover relative"
                 style={{
-                  backgroundImage: "url('https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769011688/kadri_gdfv72.png')"
+                  backgroundImage: "url('https://res.cloudinary.com/daqmbfctv/image/upload/v1774969124/NEW_CHAIR_PHOTO_gpgfga.jpg')"
                 }}
               />
             </div>
