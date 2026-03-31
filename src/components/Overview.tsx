@@ -27,7 +27,7 @@ export default function Hero() {
       className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundImage:
-          "url('https://res.cloudinary.com/daqmbfctv/image/upload/v1770547083/New-salami-hero-image_npvd4u_jkp4ym.jpg')",
+          "url('https://res.cloudinary.com/daqmbfctv/image/upload/c_crop,g_north_west,h_3651,w_4032,y_902/New-salami-hero-image_npvd4u.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
