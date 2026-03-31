@@ -122,8 +122,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between gap-2">
           {/* Logo */}
-          <Link href="/" aria-label="Kadir Salami" className="shrink-0">
+          <Link href="#" aria-label="Kadir Salami" className="shrink-0">
             <Image
+            onClick={() => scrollToId("home")}
               src="https://res.cloudinary.com/drktuxjgs/image/upload/v1770302201/FullLogo_NoBuffer-removebg-preview_jl9edl.png"
               alt="Kadir Salami"
               width={40}
