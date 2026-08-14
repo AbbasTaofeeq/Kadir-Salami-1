@@ -2,6 +2,26 @@
 
 import { useEffect, useRef } from "react";
 
+// The EmailJS SDK loads from a CDN with `async`, so it is usually not on
+// `window` yet when the mount effect runs. Poll for it instead of assuming.
+function waitForEmailJS(timeoutMs = 10000): Promise<EmailJS | null> {
+  if (typeof window === "undefined") return Promise.resolve(null);
+  if (window.emailjs) return Promise.resolve(window.emailjs);
+
+  return new Promise((resolve) => {
+    const started = Date.now();
+    const timer = setInterval(() => {
+      if (window.emailjs) {
+        clearInterval(timer);
+        resolve(window.emailjs);
+      } else if (Date.now() - started > timeoutMs) {
+        clearInterval(timer);
+        resolve(null);
+      }
+    }, 100);
+  });
+}
+
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const submitBtnRef = useRef<HTMLButtonElement>(null);
@@ -20,10 +40,10 @@ export default function Contact() {
       const btnLoading = btnLoadingRef.current;
       const formMessage = formMessageRef.current;
 
-      // Initialize EmailJS immediately - exactly like original
-      if (typeof window !== "undefined" && (window as any).emailjs) {
-        (window as any).emailjs.init("6rRXLq1IpQrsJRJdk");
-      }
+      // Initialize EmailJS as soon as the CDN script has landed
+      void waitForEmailJS().then((emailjs) => {
+        emailjs?.init("6rRXLq1IpQrsJRJdk");
+      });
 
       // Show message function - exactly like original
       function showMessage(message: string, isSuccess = true) {
@@ -104,8 +124,12 @@ export default function Contact() {
         setLoading(true);
 
         try {
-          // Send email using EmailJS - exactly like original
-          const emailjs = (window as any).emailjs;
+          // Wait for the CDN script, in case the visitor submits early
+          const emailjs = await waitForEmailJS();
+          if (!emailjs) {
+            throw new Error("EmailJS failed to load");
+          }
+
           const response = await emailjs.send(
             "service_7kkw8ch",
             "template_cd0j0k6",

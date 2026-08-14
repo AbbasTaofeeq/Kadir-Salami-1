@@ -10,7 +10,7 @@ export default function WorkSection() {
         "Designed transformation systems that connect technology to organizational reality.",
       img: "https://res.cloudinary.com/daqmbfctv/image/upload/e_improve,e_sharpen/v1769431483/Screenshot_2287_fkdmix.png",
       ctaText: "Visit TechSpecialist Consulting",
-      ctaUrl: "https://techspecialistlimited.com/home",
+      ctaUrl: "https://techspecialistlimited.com",
     },
     {
       title: "Mswitch Media",
