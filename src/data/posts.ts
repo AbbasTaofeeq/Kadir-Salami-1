@@ -14,6 +14,45 @@ export type BlogPost = {
 
 export const posts: BlogPost[] = [
   {
+    id: "5",
+    title: "Technology Doesn't Transform Organisations. People Do.",
+    slug: "technology-doesnt-transform-organisations-people-do",
+    date: "7 September 2026",
+    excerpt:
+      "Technology doesn't transform organizations. People do. Technology simply amplifies the way people already think.",
+    content: `Technology doesn't transform organizations. People do.
+Technology simply amplifies the way people already think.
+
+One of the ideas I shared during the TEDx Maitama panel was this:
+
+Stop treating digital transformation as a technology project. Start treating it as a new way of thinking.
+
+Across Africa, many organisations including the government offices already own latest technology, yet they still struggle with fragmented data, disconnected systems and inefficient processes. The problem isn't always a lack of tools. It's that we've digitised silos instead of redesigning how work gets done.
+
+And that's where I believe one of the biggest opportunities lies for young professionals.
+
+The next set of high-impact careers won't just be in building AI models. They will be in helping organisations become AI-ready.
+
+We need more data engineers who can connect systems and turn scattered data into meaningful insights.
+
+We need more process engineers who ask, "Should this process even exist in its current form?" before automating it.
+
+The organisations that will lead in this era won't necessarily be the ones with the most technology. They'll be the ones that can connect people, processes and data into one intelligent ecosystem. And few leaders in many organizations are already yearning for this.
+
+For every young professional wondering where the opportunity is, don't just learn AI.
+
+Learn to build the foundations that allow AI to create real value.
+
+That is where I think the next decade of impact will be created.
+
+Thanks to TEDxMaitama Official team for inviting me to represent TechSpecialist  and share my thoughts to a young and very vibrant audience.`,
+    image: "/tdex.jpg",
+    category: "Leadership",
+    sourcePlatform: null,
+    sourceUrl: null,
+    featured: true,
+  },
+  {
     id: "1",
     title: "If AI Joined Your Organisation Today, What Role Would You Give It?",
     slug: "if-ai-joined-your-organisation-today-what-role-would-you-give-it",
